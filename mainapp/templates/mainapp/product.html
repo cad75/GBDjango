@@ -17,7 +17,7 @@
         <div class="details-products">
             <div class="details-slider">
                 <div class="slider-product">
-                    <img src="/media/{{ hot_product.image }}">
+                    <img src="/media/{{ product.image }}">
                 </div>
                 <div class="slider-control">
                     <div class="block">
@@ -39,38 +39,19 @@
             </div>
 
             <div class="description">
-                <h3 class="big-bold">{{ hot_product.name }}</h3>
+                <h3 class="big-bold">{{ product.name }}</h3>
                 <h3 class="red">горячее предложение</h3>
-                <p class="price">{{ hot_product.price|floatformat:2 }}<span>руб</span></p>
-                <a href="{% url 'basket:add' hot_product.pk %}" class="red-button">
+                <p class="price">{{ product.price|floatformat:2 }}<span>руб</span></p>
+                <a href="{% url 'basket:add' product.pk %}" class="red-button">
                     заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
                 </a>
                 <div class="description-text">
-                    <p>{{ hot_product.short_desc }}</p>
-
+                    <p>{{ product.short_desc }}</p>
                 </div>
             </div>
         </div>
 
-        <div class="related">
-            <div class="title clearfix">
-                <h2>Похожие продукты</h2>
-                <a class="explore" href="#">показать все <img src="{% static 'img/arrow.png' %}" alt=""></a>
-            </div>
-            <div class="related-products clearfix">
-                {% for product in same_products %}
-                    <div class="block">
-                        <a href="{% url 'mainapp:product' product.pk %}"><img src="/media/{{ product.image }}" alt="">
-                            <div class="text">
-                                <img src="{% static 'img/icon-hover.png' %}" alt="img">
-                                <h4>{{ product.name }}</h4>
-                                <p>{{ product.category.name }}</p>
-                            </div>
-                        </a>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
+
     </div>
 
 {% endblock %}
