@@ -15,7 +15,6 @@ class ShopUserLoginForm(AuthenticationForm):
             field.help_text = ''
 
 
-
 class ShopUserRegisterForm(UserCreationForm):
 
     class Meta:
