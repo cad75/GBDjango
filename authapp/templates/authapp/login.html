@@ -3,15 +3,19 @@
 
 
 {% block content %}
-    <form class="form-horizontal" action="{% url 'auth:login' %}" method="post">
-        {% csrf_token %}
-        {{ login_form.as_p }}
-        {% if next %}
-            <input type="hidden" name="next" value="{{ next }}"/>
-        {% endif %}
-        <input class="form-control" type="submit" value="войти">
+    <div class="" style="padding: 20px;">
+        <form class="form-horizontal" action="{% url 'auth:login' %}" method="post">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}"/>
+            {% endif %}
+            <input class="form-control" type="submit" value="войти">
+        </form>
         <hr>
-        <a href="{% url 'auth:register' %}">Регистрация</a>
-    </form>
+        <a class="btn btn-link" href="{% url 'auth:register' %}">Регистрация</a><br>
+        <a class="btn btn-link" href="{% url 'social:begin' 'vk-oauth2' %}?next=/">Вход через VK</a>
+    </div>
+
 
 {% endblock %}
