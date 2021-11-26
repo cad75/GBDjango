@@ -11,7 +11,6 @@ class ShopUserAdminEditForm(ShopUserEditForm):
         fields = '__all__'
 
 
-
 class ProductEditForm(forms.ModelForm):
 
     class Meta:
