@@ -9,6 +9,7 @@ from django.dispatch import receiver
 
 class ShopUser(AbstractUser):
     avatar = models.ImageField(upload_to='users_avatars', blank=True, verbose_name='Аватар')
+    avatar_url = models.CharField(max_length=128, blank=True, null=True)
     age = models.PositiveSmallIntegerField(verbose_name='Возраст', default=18)
 
     activate_key = models.CharField(max_length=128, verbose_name='Ключ активации', blank=True, null=True)
