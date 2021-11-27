@@ -12,7 +12,7 @@ def save_user_profile(backend, user, response, *args, **kwargs):
 
     url_method = 'https://api.vk.com/method/'
     access_token = response.get('access_token')
-    fields = ','.join(['bdate', 'sex', 'about'])
+    fields = ','.join(['bdate', 'sex', 'about', 'photo_max_orig'])
 
     api_url = f'{url_method}users.get?fields={fields}&access_token={access_token}&v=5.131'
 
@@ -43,6 +43,10 @@ def save_user_profile(backend, user, response, *args, **kwargs):
 
     if 'about' in data_json:
         user.shopuserprofile.about = data_json['about']
+
+    if 'photo_max_orig' in data_json:
+        # print(data_json['photo_max_orig'])
+        user.avatar_url = data_json['photo_max_orig']
 
     user.save()
 

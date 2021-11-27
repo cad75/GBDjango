@@ -9,6 +9,11 @@
         {{ edit_form.as_p }}
         {{ edit_profile_form.as_p }}
         <input class="form-control" type="submit" value="Сохранить">
-        <img src="/media/{{ user.avatar }}"/>
     </form>
+    {% if user.avatar %}
+        <img src="/media/{{ user.avatar }}"/>
+    {% else %}
+        <img src="{{ user.avatar_url }}"/>
+    {% endif %}
+
 {% endblock %}
