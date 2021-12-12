@@ -1,5 +1,4 @@
 from django.urls import path
-
 from ordersapp import views as ordersapp
 
 app_name = 'ordersapp'
@@ -11,5 +10,6 @@ urlpatterns = [
     path('update/<pk>/', ordersapp.OrderUpdateView.as_view(), name='update'),
     path('delete/<pk>/', ordersapp.OrderDeleteView.as_view(), name='delete'),
     path('cancel/forming/<pk>/', ordersapp.order_forming_complete, name='forming_cancel'),
+    path('product/price/<pk>/', ordersapp.get_product_price, name='get_product_price'),
 ]
 
