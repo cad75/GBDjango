@@ -2,6 +2,7 @@ import random
 
 from django.core.cache import cache
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.conf import settings
@@ -50,9 +51,13 @@ def get_same_products(hot_product):
 
 @never_cache
 def index(request):
+    # is_home = Q(category__name='дом')
+    # is_office = Q(category__name='офис')
     context = {
         'title': 'Главная',
-        'products': Product.objects.all()[:4],
+        'products': Product.objects.all(
+            # is_home | is_office
+        ),
         # 'basket': get_basket(request.user)
     }
     return render(request, 'mainapp/index.html', context)

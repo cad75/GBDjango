@@ -25,6 +25,7 @@ class Product(models.Model):
     quantity = models.PositiveSmallIntegerField(default=0, verbose_name='количество')
     is_active = models.BooleanField(default=True, db_index=True)
 
+
     def __str__(self):
         return f'{self.name} ({self.category.name})'
 
